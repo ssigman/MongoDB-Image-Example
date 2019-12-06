@@ -44,7 +44,8 @@ app.post('/upload', upload.single('photo'), (req, res) => {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send("Image was saved.");
+            //res.send("Image was saved.");
+            res.redirect('/home.html');
         }
     });
 });

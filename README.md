@@ -28,8 +28,8 @@ mongod -dbpath <<absolute path to your data directory>>
   * point your browser http://localhost:3000,
   * choose an image and complete the form, and
   * upload the image.
-8. (**Current Version**) Pointing your browser to http://localhost:3000/getImages will return a JSON array of images you have saved in the database.
+8. ~~(**Current Version**) Pointing your browser to http://localhost:3000/getImages will return a JSON array of images you have saved in the database.~~
 
 **Note 1:** You may check the images whether your images have uploaded at any time using the MongoDB command line tool, mongo.  The command to use is `db.images.find()`.
 
-**Note 2:** The next version of this example will illustrate using an AJAX call to process the array of image information returned by the /getImages route.
+~~**Note 2:** The next version of this example will illustrate using an AJAX call to process the array of image information returned by the /getImages route.~~
