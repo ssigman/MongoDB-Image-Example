@@ -4,7 +4,7 @@ Example uploading images to a static directory and making an entry into a MongoD
 ## Directions
 1. Clone the repo to your local machine.
 2. In the working directory of your local repo install the node
-project with the command: npm install
+project with the command: `npm install`
 3. If the MongoDB service is not started, start it with the command:
 ```
 mongod -dbpath <<absolute path to your data directory>>
