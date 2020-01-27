@@ -60,3 +60,11 @@ typings/
 # next.js build output
 .next
 uploads
+
+# Visual Studio Code Project Files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
