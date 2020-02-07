@@ -15,9 +15,15 @@ mongod -dbpath <<absolute path to your data directory>>
   * create the following document:
   ```
   image = {
-    "filename" : "SSDLC_Pedal_View.png", 
-    "photo_name" : "Security Touchpoints in Pedal",
+    "filename" : "photo-1581092930041.png", 
+    "photo_name" : "Pedal Model",
     "album" : "tech drawings", 
+    "description": "Pedal is an Agile, student oriented, software development model.",
+    "f_stop": "",
+    "s_speed: "",
+    "focus_len": "",
+    "iso": "",
+    "camera": "",
     "upload_date" : ISODate()
   }
   ```
