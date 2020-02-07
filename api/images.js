@@ -30,6 +30,7 @@ var upload = multer({ storage: storage });
 
 // API to get all images (api/images)
 router.get('/', (req,res) =>{
+    console.log('Get all images called!')
     Image.find({},(err,img) => {
         if (err) {
             res.status(400).send(err);
@@ -53,6 +54,11 @@ router.post('/', upload.single('photo'), (req, res) => {
         filename: req.file.filename,
         photo_name: req.body.photoName,
         album: req.body.album,
+        description: req.body.description,
+        f_stop: req.body.f_stop,
+        s_speed: req.body.s_speed,
+        iso: req.body.iso,
+        camera: req.body.camera,
         upload_date: new Date()
     });
 

@@ -10,7 +10,7 @@
    Upload an image
    api/images POST 200 on success, 400 and error on failure
 
-   Author: S. Sigman
+   Author: S. Sigman 
    Version: 1.1 (2/3/2020)
  */
 const express = require('express');
