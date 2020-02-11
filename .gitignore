@@ -171,3 +171,8 @@ photo-1580240570056.png
 photo-1580680397745.png
 photo-1580681720118.png
 photo-1580681849285.jpeg
+photo-1581298517688.jpeg
+photo-1581389381876.png
+
+/public/images/*
+!/public/images/photo-1581092930041.png
