@@ -16,9 +16,9 @@ mongod -dbpath <<absolute path to your data directory>>
   ```
   image = {
     "filename" : "photo-1581092930041.png", 
-    "photo_name" : "Pedal Model",
+    "photo_name" : "Security Touchpoints in Pedal",
     "album" : "tech drawings", 
-    "description": "Pedal is an Agile, student oriented, software development model.",
+    "description": "Pedal is an Agile, student oriented, software development model. This diagram illustrates McGraw's security touchpoints mapped on to Pedal.",
     "f_stop": "",
     "s_speed: "",
     "focus_len": "",
