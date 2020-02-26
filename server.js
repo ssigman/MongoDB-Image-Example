@@ -19,7 +19,7 @@
  */
 const express = require('express');
 const bodyParser = require('body-parser');
-const Image = require("./models/image");
+//const Image = require("./models/image");
 
 const app = express();
 const PORT = 3000;
