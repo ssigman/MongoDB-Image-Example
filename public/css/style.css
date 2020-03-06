@@ -8,6 +8,23 @@ body {
 .headMenu .btn-link {
     color: black;
 }
+
+#welcomeMsg {
+    display: none;
+}
+
+#passError, #dupError, #authError {
+    padding-right: unset;
+}
+
+#passErrorCloseButton, #dupErrorCloseButton, #authErrorCloseButton {
+    color: #721c72
+}
+
+#logout {
+    vertical-align: baseline;
+}
+
 /* styles from https://bootsnipp.com/snippets/qr46N */
 .seminor-login-modal-body .close{
     position: relative;

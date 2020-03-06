@@ -51,4 +51,37 @@ router.post("/user",(req,res)=> {
    
 });
 
+// route to authenticate a user
+router.post("/auth", (req, res)=>{
+  // is the user in the database
+  User.findOne({uid: {$eq: req.body.username}}, (err, user)=> {
+    if (err) throw err;
+
+    if (!user) {
+      console.log("Auth: User not found");
+      // user not found
+      res.status(401).json({ error: "Bad username/password."});
+    }
+    else {
+      console.log("User Found " + user);
+      bcrypt.compare(req.body.password, user.password, (err, valid)=>{
+        if (err) {
+          res.status(400).json({ error: err});
+        }
+        else if (valid) {
+          let commaPos = user.full_name.indexOf(',');
+          let firstName = user.full_name.substring(commaPos+1);
+          let token = jwt.encode({username: user.uid}, secret);
+          res.json({token: token,
+                    firstName: firstName});
+        }
+        else {
+          res.status(401).json({ error: "Bad username/password."});
+        }
+      });
+      
+    }
+  });
+});
+
 module.exports = router;
