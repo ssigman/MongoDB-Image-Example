@@ -1,38 +1,60 @@
-/*
-   server.js - This module provides a web server
-   for the static web pages and for the web pages
-   used by the DUCS Image Album App.  Web services
-   are provided by the following RESTful API:
-
-   (Sprint 1)
-   Get all Images
-   api/images GET  200 on success, 400 and error on failure
-   Upload an image
-   api/images POST 200 on success, 400 and error on failure
-
-   (Sprint 2)
-   Create new user account
-   api/user POST 201 on success
-
-   Author: S. Sigman 
-   Version: 1.1 (2/3/2020)
- */
 const express = require('express');
+const multer = require('multer');
 const bodyParser = require('body-parser');
-//const Image = require("./models/image");
+const path = require('path');
+const Image = require("./models/image");
+
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images')
+  },
+  filename: function (req, file, cb) {
+    cb(null,  file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+// set upload object to store pictures to correct location
+var upload = multer({ storage: storage })
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// configure server to use router node
-const router = express.Router();
-// Use the body parser with urlencoded data
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use('/api/images', require('./api/images'));
-router.use('/api', require('./api/users'));
-app.use(router);
+app.post('/upload', upload.single('photo'), (req, res) => {
+    // log the file upload to console
+    if(req.file) {
+        //res.json(req.file);
+        console.log("File: " + req.body.photoName + " saved on.");
+    }
+    else throw 'error';
+    
+    // make a new Image object from the input data
+    var img = new Image({
+        filename: req.file.filename,
+        photo_name: req.body.photoName,
+        album: req.body.album,
+        upload_date: new Date()
+    });
+
+    // save the image to the database
+    img.save(function(err, img) {
+        if (err) {
+            res.status(400).send(err);
+        } else {
+            //res.send("Image was saved.");
+            res.redirect('/home.html');
+        }
+    });
+});
+
+app.get('/getImages', (req,res) =>{
+    Image.find({},(err,img) => {
+               res.json(img);
+               });
+});
 
 app.listen(PORT, () => {
     console.log('Listening at ' + PORT );
